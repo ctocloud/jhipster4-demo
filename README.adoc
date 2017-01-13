@@ -28,7 +28,7 @@ ifdef::env-github[]
 endif::[]
 :toc:
 
-This article shows you how to build a simple blog application with https://jhipster.github.io/[JHipster] 4. At the time of this writing (January 10, 2017), JHipster 4 has not been released.
+This article shows you how to build a simple blog application with https://jhipster.github.io/[JHipster] 4. At the time of this writing (January 12, 2017), JHipster 4 has not been released.
 
 ifdef::env-github[]
 TIP: It appears you're reading this document on GitHub. If you want a prettier view, install https://chrome.google.com/webstore/detail/asciidoctorjs-live-previe/iaalpfgpbocpdfblpnhhgllgbdbchmia[Asciidoctor.js Live Preview for Chrome], then view the https://raw.githubusercontent.com/mraible/jhipster4-demo/master/README.adoc[raw document]. Another option is to use the http://gist.asciidoctor.org/?github-mraible/jhipster4-demo//README.adoc[DocGist view].
@@ -185,7 +185,7 @@ Below is the entity diagram and JDL code needed to generate a simple blog with b
 .Blog entity diagram
 image::static/jdl-studio.png[Blog entity diagram, 1283, scaledwidth=100%]
 
-You can http://bit.ly/jhipster-blog-jdl[click on this URL], or copy/paste the contents of the file below to your hard drive if you'd like to follow along.
+You can http://bit.ly/jhipster4-blog-jdl[click on this URL], or copy/paste the contents of the file below to your hard drive if you'd like to follow along.
 
 .jhipster-jdl.jh
 ----
@@ -196,7 +196,7 @@ entity Blog {
 
 entity Entry {
 	title String required,
-	content String required,
+	content TextBlob required,
 	date ZonedDateTime required
 }
 
@@ -205,10 +205,7 @@ entity Tag {
 }
 
 relationship ManyToOne {
-	Blog{user(login)} to User
-}
-
-relationship ManyToOne {
+	Blog{user(login)} to User,
 	Entry{blog(name)} to Blog
 }
 
